@@ -63,17 +63,19 @@ def main():
     translated_file_path = os.path.join(result_dir, translated_file_name)
     with open(translated_file_path, 'tw', encoding = 'utf-8') as f:
       f.write(translated_text)
+    return translated_file_name
       
   current_dir = os.path.dirname(os.path.abspath(__file__))
   files_list = get_files_list_to_translate()
   if files_list:
-    translate_to = input('Введите язык перевода: ')
+#    translate_to = input('Введите язык перевода: ')
+    translate_to = 'ru'
     result_dir = make_result_dir()
     for file_name in files_list:
       try:
         translated_text = open_and_translate(file_name)
-        write_translate(file_name, result_dir, translated_text)
-        print('Перевод файла {} выполнен успешно.'.format(file_name))
+        translated_file_name = write_translate(file_name, result_dir, translated_text)
+        print('Перевод файла {} выполнен успешно и записан в файл {}.'.format(file_name, translated_file_name))
       except:
         print('Ошибка перевода файла {}!'.format(file_name)) 
 
