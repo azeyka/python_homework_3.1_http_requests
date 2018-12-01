@@ -83,5 +83,6 @@ def main():
     print('Результаты в папке {}'.format(result_dir))
   else:
     print('В папке нет ни одного доступного для перевода файла.')
-  
-main()
+    
+if __name__ == '__main__':  
+  main()
